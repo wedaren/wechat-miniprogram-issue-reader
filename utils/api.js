@@ -42,7 +42,12 @@ const request = (url, options = {}) => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           resolve(res.data)
         } else {
-          reject(new Error(`HTTP ${res.statusCode}: ${res.data?.error?.message || 'Unknown error'}`))
+          // 创建错误对象并附加状态码和响应信息
+          const error = new Error(`HTTP ${res.statusCode}: ${res.data?.error?.message || 'Unknown error'}`)
+          error.statusCode = res.statusCode
+          error.response = res
+          error.data = res.data
+          reject(error)
         }
       },
       fail: (error) => {
@@ -89,22 +94,23 @@ const api = {
 
   // 获取知识库结构
   async getStructure(etag = null) {
-    const headers = {}
+    const headers = {
+      'Accept': 'application/json'
+    }
+    
     if (etag) {
       headers['If-None-Match'] = etag
     }
     
     try {
       return await get(API_ENDPOINTS.STRUCTURE, {}, { 
-        header: { 
-          ...headers,
-          'Accept': 'application/json'
-        }
+        header: headers
       })
     } catch (error) {
+      // 检查是否为304 Not Modified
       if (error.statusCode === 304) {
-        // 304 Not Modified - 数据未更新
-        return null
+        console.log('[API] Structure not modified (304)')
+        return null // 返回null表示数据未更新
       }
       throw error
     }
@@ -188,11 +194,55 @@ const cache = {
   }
 }
 
+// 状态码检查工具
+const isHttpError = (error) => {
+  return error && typeof error.statusCode === 'number'
+}
+
+const isClientError = (error) => {
+  return isHttpError(error) && error.statusCode >= 400 && error.statusCode < 500
+}
+
+const isServerError = (error) => {
+  return isHttpError(error) && error.statusCode >= 500
+}
+
+const isNotModified = (error) => {
+  return isHttpError(error) && error.statusCode === 304
+}
+
 // 错误处理工具
 const handleError = (error, defaultMessage = '网络请求失败') => {
   let message = defaultMessage
   
-  if (error.errMsg) {
+  if (error.statusCode) {
+    // HTTP 状态码错误
+    switch (error.statusCode) {
+      case 400:
+        message = '请求参数错误'
+        break
+      case 401:
+        message = '未授权访问'
+        break
+      case 403:
+        message = '访问被拒绝'
+        break
+      case 404:
+        message = '请求的资源不存在'
+        break
+      case 500:
+        message = '服务器内部错误'
+        break
+      case 502:
+        message = '服务器网关错误'
+        break
+      case 503:
+        message = '服务暂时不可用'
+        break
+      default:
+        message = error.message || `HTTP ${error.statusCode} 错误`
+    }
+  } else if (error.errMsg) {
     // 微信小程序错误
     if (error.errMsg.includes('timeout')) {
       message = '请求超时，请检查网络连接'
@@ -200,7 +250,7 @@ const handleError = (error, defaultMessage = '网络请求失败') => {
       message = '网络连接失败，请检查网络设置'
     }
   } else if (error.message) {
-    // API 错误
+    // 其他错误
     message = error.message
   }
   
@@ -216,5 +266,10 @@ module.exports = {
   handleError,
   request,
   get,
-  post
+  post,
+  // 状态码检查工具
+  isHttpError,
+  isClientError,
+  isServerError,
+  isNotModified
 }
