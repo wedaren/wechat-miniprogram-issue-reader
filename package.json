@@ -10,7 +10,7 @@
   },
   "keywords": [
     "wechat",
-    "miniprogram", 
+    "miniprogram",
     "微信小程序",
     "markdown",
     "knowledge-base",
@@ -26,7 +26,8 @@
   "devDependencies": {
     "@types/wechat-miniprogram": "^3.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "miniprogram": {
     "libVersion": "2.32.3"
   }

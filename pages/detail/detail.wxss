@@ -6,14 +6,15 @@
 
 .content-container {
   height: 100vh;
-  padding: 0 40rpx;
+  padding: 0 20rpx; /* 减少左右内边距，让内容有更多空间 */
+  width: calc(100% - 30rpx); /* 减少左右内边距，让内容有更多空间 */
 }
 
 /* 文章头部 */
 .article-header {
-  padding: 40rpx 0;
+  padding: 30rpx 0 40rpx 0; /* 优化头部间距 */
   border-bottom: 1rpx solid #e9ecef;
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx; /* 减少底部间距，让内容更紧凑 */
 }
 
 .article-title {
@@ -75,13 +76,27 @@
   color: #212529;
   font-size: 30rpx;
   word-break: break-word;
-  padding-bottom: 180rpx; /* 为FAB组留出空间 */
+  padding: 20rpx 0 200rpx 0; /* 增加上下内边距，为FAB组留出空间 */
 }
 
-.markdown-text {
-  white-space: pre-wrap;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+/* Rich-text 样式 */
+.markdown-content rich-text {
   display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  word-wrap: break-word;
+}
+
+/* 无内容状态 */
+.no-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200rpx;
+}
+
+.no-content-text {
+  color: #999999;
+  font-size: 28rpx;
 }
 
 /* 浮动操作按钮组 */

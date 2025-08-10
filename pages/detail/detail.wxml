@@ -24,7 +24,10 @@
     
     <!-- Markdown内容 -->
     <view class="markdown-content">
-      <text class="markdown-text">{{markdownContent}}</text>
+      <rich-text nodes="{{markdownNodes}}" wx:if="{{markdownNodes && markdownNodes.length > 0}}" />
+      <view wx:else class="no-content">
+        <text class="no-content-text">暂无内容</text>
+      </view>
     </view>
   </scroll-view>
 

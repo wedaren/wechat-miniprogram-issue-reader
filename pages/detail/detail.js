@@ -1,5 +1,6 @@
 const app = getApp()
 const { handleError } = require('../../utils/api.js')
+const { toRichText } = require('../../utils/markdown-optimized.js')
 
 Page({
   data: {
@@ -9,6 +10,7 @@ Page({
     hasError: false,
     errorMessage: '',
     markdownContent: '',
+    markdownNodes: null,
     isFocused: false,
     formatTime: '',
     wordCount: 0,
@@ -62,8 +64,12 @@ Page({
     try {
       const issue = await app.getIssueContent(this.data.filePath)
       
+      // 渲染Markdown内容
+      const richTextNodes = toRichText(issue.content)
+      
       this.setData({
         markdownContent: issue.content,
+        markdownNodes: richTextNodes,
         title: issue.title || this.data.title,
         lastModified: this.formatDateTime(issue.last_modified),
         formatTime: this.getCurrentTime(),
