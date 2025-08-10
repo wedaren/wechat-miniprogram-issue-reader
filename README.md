@@ -30,7 +30,7 @@
 
 ## 项目结构
 
-```
+```text
 ├── app.js                    # 应用入口文件
 ├── app.json                  # 全局配置
 ├── app.wxss                  # 全局样式
@@ -71,6 +71,7 @@
 ## 数据结构
 
 ### tree.json 示例
+
 ```json
 [
   {
@@ -88,6 +89,7 @@
 ```
 
 ### focused.json 示例
+
 ```json
 ["1-1", "2-1"]
 ```
@@ -100,12 +102,45 @@
 2. 申请微信小程序AppID
 3. Node.js环境（用于后端API开发）
 
+### ⚠️ 安全配置
+
+**重要**: 项目包含敏感的小程序配置信息，请先阅读 [SECURITY.md](./SECURITY.md) 了解安全配置要求。
+
 ### 本地开发
 
 1. 克隆项目到本地
-2. 使用微信开发者工具打开项目目录
-3. 配置AppID
-4. 预览或真机调试
+
+   ```bash
+   git clone https://github.com/wedaren/wechat-miniprogram-issue-reader.git
+   cd wechat-miniprogram-issue-reader
+   ```
+
+2. 配置小程序项目
+
+   ```bash
+   # 复制配置文件模板
+   cp project.config.json.example project.config.json
+   
+   # 编辑配置文件，将 YOUR_APPID_HERE 替换为你的实际AppID
+   # 注意：请勿将包含真实AppID的文件提交到版本控制系统
+   ```
+
+3. 使用微信开发者工具打开项目目录
+
+4. 安装依赖（如果有）
+
+   ```bash
+   npm install
+   ```
+
+5. 预览或真机调试
+
+### 🔐 AppID 配置说明
+
+- `project.config.json` 文件包含小程序AppID等敏感信息，已添加到 `.gitignore`
+- 开发时请复制 `project.config.json.example` 并配置实际AppID
+- **切勿**将包含真实AppID的配置文件提交到版本控制系统
+- 团队协作时请通过安全渠道私下分享AppID
 
 ### 图标准备
 
