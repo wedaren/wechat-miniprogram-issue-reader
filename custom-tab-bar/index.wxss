@@ -1,0 +1,40 @@
+/* 自定义tabBar样式 */
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #ffffff;
+  display: flex;
+  border-top: 1rpx solid #e9ecef;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 1000;
+}
+
+.tab-bar-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  transition: all 0.2s ease;
+}
+
+.tab-bar-item--active {
+  color: #007aff;
+}
+
+.tab-bar-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 4rpx;
+}
+
+.tab-bar-text {
+  font-size: 20rpx;
+  line-height: 1.2;
+}

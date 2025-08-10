@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "问题总览",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tree-node": "/components/tree-node/tree-node"
+  }
+}

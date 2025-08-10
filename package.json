@@ -1,0 +1,33 @@
+{
+  "name": "wechat-miniprogram-issue-reader",
+  "version": "1.0.0",
+  "description": "微信小程序：问题阅读器 - 基于Markdown的个人知识库移动端阅读器",
+  "main": "app.js",
+  "scripts": {
+    "dev": "echo '请使用微信开发者工具打开此项目'",
+    "build": "echo '构建完成，请在微信开发者工具中上传代码'",
+    "lint": "echo '代码检查功能待添加'"
+  },
+  "keywords": [
+    "wechat",
+    "miniprogram", 
+    "微信小程序",
+    "markdown",
+    "knowledge-base",
+    "问题管理",
+    "个人知识库"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/wechat-miniprogram-issue-reader.git"
+  },
+  "devDependencies": {
+    "@types/wechat-miniprogram": "^3.4.0"
+  },
+  "dependencies": {},
+  "miniprogram": {
+    "libVersion": "2.32.3"
+  }
+}

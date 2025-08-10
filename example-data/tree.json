@@ -1,0 +1,77 @@
+[
+  {
+    "id": "tech",
+    "title": "技术问题",
+    "children": [
+      {
+        "id": "tech-frontend",
+        "title": "前端技术",
+        "children": [
+          {
+            "id": "tech-frontend-js",
+            "title": "JavaScript问题",
+            "filePath": "frontend/javascript.md"
+          },
+          {
+            "id": "tech-frontend-css", 
+            "title": "CSS问题",
+            "filePath": "frontend/css.md"
+          },
+          {
+            "id": "tech-frontend-vue",
+            "title": "Vue.js问题", 
+            "filePath": "frontend/vue.md"
+          }
+        ]
+      },
+      {
+        "id": "tech-backend",
+        "title": "后端技术",
+        "children": [
+          {
+            "id": "tech-backend-node",
+            "title": "Node.js问题",
+            "filePath": "backend/nodejs.md"
+          },
+          {
+            "id": "tech-backend-db",
+            "title": "数据库问题",
+            "filePath": "backend/database.md"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product",
+    "title": "产品问题",
+    "children": [
+      {
+        "id": "product-ux",
+        "title": "用户体验",
+        "filePath": "product/ux.md"
+      },
+      {
+        "id": "product-design",
+        "title": "设计规范",
+        "filePath": "product/design.md"
+      }
+    ]
+  },
+  {
+    "id": "business",
+    "title": "业务问题", 
+    "children": [
+      {
+        "id": "business-strategy",
+        "title": "商业策略",
+        "filePath": "business/strategy.md"
+      },
+      {
+        "id": "business-market",
+        "title": "市场分析", 
+        "filePath": "business/market.md"
+      }
+    ]
+  }
+]

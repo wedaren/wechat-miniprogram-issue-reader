@@ -1,0 +1,6 @@
+/* 孤立问题页面样式 */
+@import "../focused/focused.wxss";
+
+.empty-icon {
+  color: #6c757d;
+}

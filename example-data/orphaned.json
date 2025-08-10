@@ -1,0 +1,22 @@
+[
+  {
+    "id": "orphan-interview",
+    "title": "面试准备清单",
+    "filePath": "orphans/interview-prep.md"
+  },
+  {
+    "id": "orphan-tools",
+    "title": "开发工具收集",
+    "filePath": "orphans/dev-tools.md"
+  },
+  {
+    "id": "orphan-ideas",
+    "title": "产品想法记录",
+    "filePath": "orphans/product-ideas.md"
+  },
+  {
+    "id": "orphan-learning",
+    "title": "学习计划",
+    "filePath": "orphans/learning-plan.md"
+  }
+]

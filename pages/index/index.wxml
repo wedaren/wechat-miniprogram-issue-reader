@@ -1,0 +1,43 @@
+<!-- 问题总览页面 -->
+<view class="page-container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="tab-title">问题总览</view>
+    <view class="refresh-btn" bindtap="refreshData">
+      <text class="icon-refresh {{isRefreshing ? 'rotating' : ''}}">↻</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="loading-container">
+    <loading></loading>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view wx:elif="{{hasError}}" class="error-container">
+    <text class="error-icon">⚠</text>
+    <text class="error-text">{{errorMessage}}</text>
+    <view class="retry-button" bindtap="refreshData">重试</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:elif="{{isEmpty}}" class="empty-container">
+    <text class="empty-icon">🌳</text>
+    <text class="empty-text">暂无问题数据</text>
+    <text class="empty-desc">请检查数据源配置或稍后重试</text>
+  </view>
+
+  <!-- 树状视图 -->
+  <scroll-view wx:else class="tree-container" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <view wx:for="{{treeData}}" wx:key="id" class="tree-item">
+      <tree-node 
+        node="{{item}}" 
+        level="0" 
+        expanded-nodes="{{expandedNodes}}"
+        bind:toggle="onToggleNode"
+        bind:select="onSelectNode">
+      </tree-node>
+    </view>
+  </scroll-view>
+</view>
