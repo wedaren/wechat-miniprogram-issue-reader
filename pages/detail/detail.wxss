@@ -131,7 +131,6 @@
 }
 
 /* 状态页面样式继承全局样式 */
-.loading-container,
 .error-container {
   height: 100vh;
 }

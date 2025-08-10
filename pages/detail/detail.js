@@ -6,7 +6,6 @@ Page({
     id: '',
     title: '',
     filePath: '',
-    isLoading: true,
     hasError: false,
     errorMessage: '',
     markdownContent: '',
@@ -53,7 +52,12 @@ Page({
 
   // 加载内容
   async loadContent() {
-    this.setData({ isLoading: true, hasError: false })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    
+    this.setData({ hasError: false })
 
     try {
       const issue = await app.getIssueContent(this.data.filePath)
@@ -80,7 +84,7 @@ Page({
         errorMessage: handleError(error, '内容加载失败')
       })
     } finally {
-      this.setData({ isLoading: false })
+      wx.hideLoading()
     }
   },
 

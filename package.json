@@ -17,11 +17,11 @@
     "问题管理",
     "个人知识库"
   ],
-  "author": "Your Name",
+  "author": "wechat-miniprogram-issue-reader-developer",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/wechat-miniprogram-issue-reader.git"
+    "url": "https://github.com/wedaren/wechat-miniprogram-issue-reader.git"
   },
   "devDependencies": {
     "@types/wechat-miniprogram": "^3.4.0"

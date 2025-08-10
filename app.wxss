@@ -20,21 +20,6 @@ page {
   background-color: #ffffff;
 }
 
-/* 加载状态 */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 300rpx;
-}
-
-.loading-text {
-  margin-top: 20rpx;
-  color: #999999;
-  font-size: 28rpx;
-}
-
 /* 空状态 */
 .empty-container {
   display: flex;

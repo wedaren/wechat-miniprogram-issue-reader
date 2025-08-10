@@ -2,7 +2,6 @@ const app = getApp()
 
 Page({
   data: {
-    isLoading: true,
     hasError: false,
     isEmpty: false,
     errorMessage: '',
@@ -32,7 +31,12 @@ Page({
 
   // 加载数据
   async loadData() {
-    this.setData({ isLoading: true, hasError: false })
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    
+    this.setData({ hasError: false })
 
     try {
       // 等待app数据加载完成
@@ -48,7 +52,7 @@ Page({
         errorMessage: '数据加载失败，请检查网络连接'
       })
     } finally {
-      this.setData({ isLoading: false })
+      wx.hideLoading()
       wx.stopPullDownRefresh()
     }
   },
