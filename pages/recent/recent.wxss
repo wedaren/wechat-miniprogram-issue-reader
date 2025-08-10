@@ -1,0 +1,45 @@
+/* 最近问题页面样式 */
+@import "../focused/focused.wxss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.list-item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rpx;
+}
+
+.list-item-path {
+  font-size: 22rpx;
+  color: #adb5bd;
+  flex: 1;
+  margin-right: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item-time {
+  font-size: 20rpx;
+  color: #007aff;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.empty-icon {
+  color: #007aff;
+}

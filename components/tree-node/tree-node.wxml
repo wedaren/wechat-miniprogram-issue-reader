@@ -1,0 +1,31 @@
+<!-- 树节点组件 -->
+<view class="tree-node" style="padding-left: {{level * 40}}rpx">
+  <!-- 节点内容 -->
+  <view class="node-content">
+    <!-- 展开/收起按钮 -->
+    <view wx:if="{{hasChildren}}" 
+          class="toggle-btn {{expanded ? 'expanded' : ''}}" 
+          bindtap="onToggle">
+      <text class="toggle-icon">▶</text>
+    </view>
+    
+    <!-- 节点图标和标题 -->
+    <view class="node-main" bindtap="onSelect">
+      <text class="node-icon">{{nodeIcon}}</text>
+      <text class="node-title">{{node.title}}</text>
+    </view>
+  </view>
+
+  <!-- 子节点 -->
+  <view wx:if="{{hasChildren && expanded}}" class="children">
+    <tree-node 
+      wx:for="{{node.children}}" 
+      wx:key="id"
+      node="{{item}}"
+      level="{{level + 1}}"
+      expanded-nodes="{{expandedNodes}}"
+      bind:toggle="onChildToggle"
+      bind:select="onChildSelect">
+    </tree-node>
+  </view>
+</view>

@@ -1,0 +1,101 @@
+<!-- 调试页面 -->
+<view class="page-container">
+  <view class="debug-header">
+    <text class="debug-title">API 调试工具</text>
+    <text class="debug-subtitle">开发和测试专用</text>
+  </view>
+
+  <!-- API 状态 -->
+  <view class="debug-section">
+    <text class="section-title">🌐 API 状态</text>
+    
+    <view class="status-item">
+      <text class="status-label">服务状态:</text>
+      <text class="status-value {{apiStatus === 'online' ? 'status-online' : 'status-offline'}}">
+        {{apiStatus === 'online' ? '在线' : '离线'}}
+      </text>
+    </view>
+    
+    <view class="status-item">
+      <text class="status-label">数据版本:</text>
+      <text class="status-value">{{dataVersion || '未知'}}</text>
+    </view>
+    
+    <view class="status-item">
+      <text class="status-label">缓存状态:</text>
+      <text class="status-value">{{cacheStatus}}</text>
+    </view>
+  </view>
+
+  <!-- 同步状态 -->
+  <view class="debug-section">
+    <text class="section-title">🔄 同步状态</text>
+    
+    <view wx:if="{{syncStatus}}" class="sync-info">
+      <view class="status-item">
+        <text class="status-label">仓库名称:</text>
+        <text class="status-value">{{syncStatus.repoName || '未知'}}</text>
+      </view>
+      
+      <view class="status-item">
+        <text class="status-label">最后同步:</text>
+        <text class="status-value">{{formatSyncTime(syncStatus.lastSync)}}</text>
+      </view>
+      
+      <view class="status-item">
+        <text class="status-label">同步状态:</text>
+        <text class="status-value sync-status-{{syncStatus.status}}">
+          {{getSyncStatusText(syncStatus.status)}}
+        </text>
+      </view>
+      
+      <view wx:if="{{syncStatus.error}}" class="status-item">
+        <text class="status-label">错误信息:</text>
+        <text class="status-value status-error">{{syncStatus.error}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="debug-section">
+    <text class="section-title">🛠️ 操作工具</text>
+    
+    <view class="button-group">
+      <button class="debug-button" bindtap="testHealth" loading="{{loading.health}}">
+        健康检查
+      </button>
+      
+      <button class="debug-button" bindtap="checkSyncStatus" loading="{{loading.sync}}">
+        检查同步状态
+      </button>
+      
+      <button class="debug-button primary" bindtap="forceSync" loading="{{loading.forceSync}}">
+        强制同步
+      </button>
+      
+      <button class="debug-button" bindtap="clearCache" loading="{{loading.cache}}">
+        清空缓存
+      </button>
+      
+      <button class="debug-button" bindtap="testAPI" loading="{{loading.test}}">
+        API 测试
+      </button>
+    </view>
+  </view>
+
+  <!-- 日志输出 -->
+  <view class="debug-section">
+    <text class="section-title">📝 操作日志</text>
+    
+    <scroll-view class="log-container" scroll-y="true">
+      <view wx:for="{{logs}}" wx:key="index" class="log-item log-{{item.level}}">
+        <text class="log-time">{{formatLogTime(item.time)}}</text>
+        <text class="log-message">{{item.message}}</text>
+      </view>
+      
+      <view wx:if="{{logs.length === 0}}" class="log-empty">
+        暂无日志
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<!-- 最近问题页面 -->
+<view class="page-container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="tab-title">最近问题</view>
+    <view class="header-actions">
+      <view class="refresh-btn" bindtap="refreshData">
+        <text class="icon-refresh {{isRefreshing ? 'rotating' : ''}}">↻</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 错误状态 -->
+  <view wx:if="{{hasError}}" class="error-container">
+    <text class="error-icon">⚠</text>
+    <text class="error-text">{{errorMessage}}</text>
+    <view class="retry-button" bindtap="refreshData">重试</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:elif="{{isEmpty}}" class="empty-container">
+    <text class="empty-icon">🕐</text>
+    <text class="empty-text">暂无最近查看的问题</text>
+    <text class="empty-desc">查看问题详情后会自动记录在这里</text>
+  </view>
+
+  <!-- 最近问题列表 -->
+  <scroll-view wx:else class="tree-container" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <view wx:for="{{recentData}}" wx:key="id" class="list-item" bindtap="onSelectNode" data-node="{{item}}">
+      <view class="list-item-icon">📄</view>
+      <view class="list-item-content">
+        <view class="list-item-title">{{item.title}}</view>
+        <view class="list-item-meta">
+          <text class="list-item-path">{{item.filePath}}</text>
+          <text class="list-item-time">{{item.timeText}}</text>
+        </view>
+      </view>
+      <view class="list-item-arrow">›</view>
+    </view>
+  </scroll-view>
+</view>

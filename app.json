@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/focused/focused",
+    "pages/orphaned/orphaned", 
+    "pages/recent/recent",
+    "pages/detail/detail"
+  ],
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#007aff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "问题总览"
+      },
+      {
+        "pagePath": "pages/focused/focused",
+        "text": "关注问题"
+      },
+      {
+        "pagePath": "pages/orphaned/orphaned",
+        "text": "孤立问题"
+      },
+      {
+        "pagePath": "pages/recent/recent",
+        "text": "最近问题"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "问题阅读器",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,77 @@
+/* 树节点组件样式 */
+.tree-node {
+  background-color: #ffffff;
+}
+
+.node-content {
+  display: flex;
+  align-items: center;
+  min-height: 88rpx;
+  transition: background-color 0.2s ease;
+}
+
+.node-content:active {
+  background-color: #f8f9fa;
+}
+
+/* 展开/收起按钮 */
+.toggle-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8rpx;
+  border-radius: 8rpx;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:active {
+  background-color: #e9ecef;
+}
+
+.toggle-icon {
+  font-size: 24rpx;
+  color: #6c757d;
+  transition: transform 0.2s ease;
+}
+
+.toggle-btn.expanded .toggle-icon {
+  transform: rotate(90deg);
+}
+
+/* 节点主体 */
+.node-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 16rpx;
+  min-height: 48rpx;
+  border-radius: 8rpx;
+  transition: background-color 0.2s ease;
+}
+
+.node-main:active {
+  background-color: rgba(0, 122, 255, 0.1);
+}
+
+.node-icon {
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  width: 32rpx;
+  text-align: center;
+}
+
+.node-title {
+  font-size: 30rpx;
+  color: #212529;
+  line-height: 1.4;
+  word-break: break-all;
+  flex: 1;
+}
+
+/* 子节点容器 */
+.children {
+  border-left: 2rpx solid #f8f9fa;
+  margin-left: 30rpx;
+}
