@@ -25,7 +25,14 @@
   </view>
 
   <!-- 最近问题列表 -->
-  <scroll-view wx:else class="tree-container" scroll-y="true" enhanced="true" show-scrollbar="false">
+  <scroll-view wx:else 
+    class="tree-container" 
+    scroll-y="true" 
+    enhanced="true" 
+    show-scrollbar="false"
+    refresher-enabled="true"
+    refresher-triggered="{{isRefreshing}}"
+    bindrefresherrefresh="onPullDownRefresh">
     <view wx:for="{{recentData}}" wx:key="id" class="list-item" bindtap="onSelectNode" data-node="{{item}}">
       <view class="list-item-icon">📄</view>
       <view class="list-item-content">

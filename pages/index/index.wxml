@@ -23,7 +23,14 @@
   </view>
 
   <!-- 树状视图 -->
-  <scroll-view wx:else class="tree-container" scroll-y="true" enhanced="true" show-scrollbar="false">
+  <scroll-view wx:else 
+    class="tree-container" 
+    scroll-y="true" 
+    enhanced="true" 
+    show-scrollbar="false"
+    refresher-enabled="true"
+    refresher-triggered="{{isRefreshing}}"
+    bindrefresherrefresh="onPullDownRefresh">
     <view wx:for="{{treeData}}" wx:key="id" class="tree-item">
       <tree-node 
         node="{{item}}" 
