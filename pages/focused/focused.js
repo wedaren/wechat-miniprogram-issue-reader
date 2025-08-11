@@ -52,7 +52,6 @@ Page({
       })
     } finally {
       wx.hideLoading()
-      wx.stopPullDownRefresh()
     }
   },
 
@@ -116,6 +115,7 @@ Page({
       })
     } finally {
       this.setData({ isRefreshing: false })
+      wx.stopPullDownRefresh()
     }
   },
 
