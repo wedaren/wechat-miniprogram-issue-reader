@@ -1,13 +1,5 @@
 <!-- 孤立问题页面 -->
 <view class="page-container">
-  <!-- 头部 -->
-  <view class="header">
-    <view class="tab-title">孤立问题</view>
-    <view class="refresh-btn" bindtap="refreshData">
-      <text class="icon-refresh {{isRefreshing ? 'rotating' : ''}}">↻</text>
-    </view>
-  </view>
-
   <!-- 错误状态 -->
   <view wx:if="{{hasError}}" class="error-container">
     <text class="error-icon">⚠</text>

@@ -33,13 +33,13 @@
 ## 修复的文件
 ### JavaScript 文件
 - `pages/index/index.js` - 问题总览页面
-- `pages/focused/focused.js` - 关注问题页面  
+- `pages/focused/focused.js` - 关注问题页面
 - `pages/orphaned/orphaned.js` - 孤立问题页面
 - `pages/recent/recent.js` - 最近问题页面
 
 ### WXML 文件
 - `pages/index/index.wxml` - 问题总览页面
-- `pages/focused/focused.wxml` - 关注问题页面  
+- `pages/focused/focused.wxml` - 关注问题页面
 - `pages/orphaned/orphaned.wxml` - 孤立问题页面
 - `pages/recent/recent.wxml` - 最近问题页面
 
